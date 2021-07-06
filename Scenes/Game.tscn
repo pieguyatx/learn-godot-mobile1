@@ -156,6 +156,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BACK" type="Button" parent="UI/MenuButtons/Difficulty/DifficultyMenu"]
+margin_top = 258.0
+margin_right = 575.0
+margin_bottom = 340.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.407843, 0.282353, 0.282353, 1 )
+enabled_focus_mode = 0
+text = "BACK"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Score" type="Node2D" parent="."]
 
 [node name="Buttons" type="Node2D" parent="."]
@@ -166,3 +180,4 @@ __meta__ = {
 script = ExtResource( 4 )
 
 [connection signal="pressed" from="UI/MenuButtons/Start/StartMenu/Start" to="UI/MenuButtons" method="_on_Start_pressed"]
+[connection signal="pressed" from="UI/MenuButtons/Difficulty/DifficultyMenu/BACK" to="UI/MenuButtons" method="_on_BACK_pressed"]

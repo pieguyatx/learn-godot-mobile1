@@ -17,6 +17,10 @@ func _ready():
 
 
 func _on_Start_pressed():
-	print(Global.test)
 	get_node("Start").move(Vector2(-576,0))  #capital letter on V, move to position
 	get_node("Difficulty").move(Vector2(0,0))
+
+
+func _on_BACK_pressed():
+	get_node("Start").move(Vector2(0,0))
+	get_node("Difficulty").move(Vector2(576,0))

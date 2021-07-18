@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fonts/BlackOpsOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/blackOps-60.tres" type="DynamicFont" id=2]
@@ -7,7 +7,23 @@
 [ext_resource path="res://Scripts/Start.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/MenuButtons.gd" type="Script" id=6]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.29
+emission_shape = 2
+emission_box_extents = Vector3( 300, 100, 1 )
+flag_disable_z = true
+gravity = Vector3( 10, 200, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -70.86
+radial_accel_random = 0.53
+scale = 5.0
+scale_random = 0.51
+color = Color( 0.192157, 0.419608, 0.494118, 1 )
+hue_variation = 0.1
+hue_variation_random = 1.0
+
+[sub_resource type="DynamicFont" id=2]
 size = 100
 outline_size = 1
 outline_color = Color( 0.160784, 0.0941176, 0.0941176, 1 )
@@ -28,13 +44,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Particles2D" type="Particles2D" parent="Background"]
+position = Vector2( 294.465, 59.9591 )
+amount = 500
+lifetime = 10.0
+visibility_rect = Rect2( -100, -100, 200, 200.048 )
+process_material = SubResource( 1 )
+
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Title (label)" type="Label" parent="UI"]
 margin_top = 200.0
 margin_right = 576.0
 margin_bottom = 455.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.407843, 0.282353, 0.282353, 1 )
 text = "Block 
 Blaster!"
@@ -61,7 +84,7 @@ __meta__ = {
 }
 
 [node name="Start" type="Button" parent="UI/MenuButtons/Start/StartMenu"]
-margin_right = 575.0
+margin_right = 576.0
 margin_bottom = 82.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 2 )
@@ -75,7 +98,7 @@ __meta__ = {
 
 [node name="Settings" type="Button" parent="UI/MenuButtons/Start/StartMenu"]
 margin_top = 86.0
-margin_right = 575.0
+margin_right = 576.0
 margin_bottom = 168.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 2 )
@@ -89,7 +112,7 @@ __meta__ = {
 
 [node name="Quit" type="Button" parent="UI/MenuButtons/Start/StartMenu"]
 margin_top = 172.0
-margin_right = 575.0
+margin_right = 576.0
 margin_bottom = 254.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 2 )
@@ -116,7 +139,7 @@ __meta__ = {
 }
 
 [node name="Easy" type="Button" parent="UI/MenuButtons/Difficulty/DifficultyMenu"]
-margin_right = 575.0
+margin_right = 576.0
 margin_bottom = 82.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 2 )
@@ -130,7 +153,7 @@ __meta__ = {
 
 [node name="Medium" type="Button" parent="UI/MenuButtons/Difficulty/DifficultyMenu"]
 margin_top = 86.0
-margin_right = 575.0
+margin_right = 576.0
 margin_bottom = 168.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 2 )
@@ -144,7 +167,7 @@ __meta__ = {
 
 [node name="Hard" type="Button" parent="UI/MenuButtons/Difficulty/DifficultyMenu"]
 margin_top = 172.0
-margin_right = 575.0
+margin_right = 576.0
 margin_bottom = 254.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 2 )
@@ -158,7 +181,7 @@ __meta__ = {
 
 [node name="BACK" type="Button" parent="UI/MenuButtons/Difficulty/DifficultyMenu"]
 margin_top = 258.0
-margin_right = 575.0
+margin_right = 576.0
 margin_bottom = 340.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 2 )
@@ -173,10 +196,13 @@ __meta__ = {
 [node name="Score" type="Node2D" parent="."]
 
 [node name="Buttons" type="Node2D" parent="."]
+position = Vector2( 0, 0.922447 )
 
 [node name="Emitters" type="Node2D" parent="."]
+position = Vector2( -6.10352e-05, 0.922447 )
 
 [node name="Global" type="Node2D" parent="."]
+position = Vector2( 0.922485, 0 )
 script = ExtResource( 4 )
 
 [connection signal="pressed" from="UI/MenuButtons/Start/StartMenu/Start" to="UI/MenuButtons" method="_on_Start_pressed"]
